@@ -1,0 +1,13 @@
+<title>TFoBH | What's On</title>
+
+<h1>What's On</h1>
+
+<% @events.each do |event| %>
+    
+    <%= render 'show', event: event %>
+
+<% end %>
+
+<button class='big'>
+  <%= link_to 'New Event', new_event_path %>
+</button>

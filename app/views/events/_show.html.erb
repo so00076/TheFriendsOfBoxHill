@@ -1,0 +1,46 @@
+<div id='event'>
+  <table style='width:100%;'>
+    <tr>
+      <td><h2>
+        <%= #link_to event.title, event 
+        %>
+        <%= event.title %>
+        </h2></td>
+      <td style='text-align:right;'><h2><%= event.date %></h2></td>
+    </tr>
+  </table>
+
+  <p><%= event.description %></p>
+  <button id ='
+               <%= event.id %>
+               ' onClick='showComments(this.id)'>
+    Show Comments
+  </button>
+  <button>
+    <%= link_to 'New Comment', new_comment_path(event_id: event) %>
+  </button>
+  <button>
+    <%= link_to 'Edit', edit_event_path(event) %>
+  </button>
+  <button>
+    <%= link_to 'Delete', event, method: :delete, data: { confirm: 'Are you sure?' } %>
+  </button>
+  
+  <div id='comments' class='
+                            <%= event.id %>
+  '>
+  <h1>Comments</h1>
+
+  <% 
+    @comments = Comment.where(event_id: event)
+
+    @comments.each do |comment|
+  %>
+
+    <%= render 'comments/index', comment: comment %>
+
+  <% end %>
+    
+  </div>
+    
+</div><!-- event -->
